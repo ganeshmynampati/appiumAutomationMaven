@@ -1,4 +1,4 @@
-package scenarios;
+package testScenarios;
 
 import java.net.MalformedURLException;
 import java.util.List;
