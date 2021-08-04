@@ -89,6 +89,7 @@ public class ShopBrand extends BaseTest {
 
 	@AfterTest
 	public void tearDown() throws MalformedURLException {
+		driver.quit();
 		stopAppiumServer();
 	}
 
