@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -27,8 +28,11 @@ public class ShopBrand extends BaseTest {
 
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
-		driver = getCapabilities("Android", "10.0", "General-Store.apk", null, true);
-		System.out.println("Successful");
+		boolean isRunning = checkIfAppiumServerRunning(4723);
+		if (!isRunning) {
+			startAppiumServer();
+			driver = getCapabilities("Android", "10.0", "General-Store.apk", null, true);
+		}
 	}
 
 	@BeforeMethod
@@ -81,6 +85,11 @@ public class ShopBrand extends BaseTest {
 
 		}
 
+	}
+
+	@AfterTest
+	public void tearDown() throws MalformedURLException {
+		stopAppiumServer();
 	}
 
 }
