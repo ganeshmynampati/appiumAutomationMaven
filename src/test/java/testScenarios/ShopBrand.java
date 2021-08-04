@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -28,10 +27,12 @@ public class ShopBrand extends BaseTest {
 
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
-		boolean isRunning = checkIfAppiumServerRunning(4723);
-		if (!isRunning) {
+		try {
+			Runtime.getRuntime().exec("taskkill /F /IM node.exe");
 			startAppiumServer();
 			driver = getCapabilities("Android", "10.0", "General-Store.apk", null, true);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
