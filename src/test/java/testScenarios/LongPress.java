@@ -30,7 +30,6 @@ public class LongPress extends BaseTest {
 	}
 
 	public void longPress() throws MalformedURLException {
-		driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
 		driver.findElementByXPath("//android.widget.TextView[@text='Expandable Lists']").click();
 		driver.findElementByXPath("//android.widget.TextView[@text='1. Custom Adapter']").click();
